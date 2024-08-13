@@ -25,7 +25,7 @@
 
 .calculator {
   width: 340px;
-  height: 570px;
+  height: 580px;
   background-color: #6b6c6d;
   color: black;
   margin: 0 auto;
@@ -48,13 +48,38 @@
 }
 
 #equal{
-  background-color: rgb(41, 177, 170);
+  background-color: #ffff;
+  color: black;
+}
+
+#equal:hover{
+background-color: #b7bfc7;
 }
 
 .buttons{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+}
+
+.buttons img{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+#mode {
+  display: flex;
+  justify-content: center;
+}
+
+#mode button{
+  width: 100px;
+}
+
+#mode button.active-view{
+  background-color: rgb(244, 248, 248);
+  color: black;
+  cursor: auto;
 }
 
 .calculator button{
@@ -66,6 +91,7 @@
   font-weight: bold;
   font-size: 18px;
   background-color: black;
+  cursor: pointer;
 }
 
 .calculator button:hover{

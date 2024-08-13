@@ -1,9 +1,11 @@
 import { useState } from "react";
+import removeIcon from "./images/remove_icon.png";
 
 function App() {
   const [display, setDisplay] = useState("0");
   const [result, setResult] = useState(0);
   const [operator, setOperator] = useState("");
+  const [view, setView] = useState("standard");
 
   //Ingresar el número
   const handleNumberClick = (number) => {
@@ -37,11 +39,24 @@ function App() {
     }
   };
 
+  //Borrar solo el display actual
+  const handleDeleteAll = () => {
+    setDisplay("0");
+  };
+
   //Borrar todo
   const handleClear = () => {
     setDisplay("0");
     setResult(0);
     setOperator("");
+  };
+
+  const handleNegative = () => {
+    if (display > 0) {
+      setDisplay(display * -1);
+    } else if (display < 0) {
+      setDisplay(display * -1);
+    }
   };
 
   //Calcular resultado
@@ -76,33 +91,96 @@ function App() {
   return (
     <main className="title">
       <h1>Calculadora</h1>
-      <div className="calculator">
-        <div className="display">{display}</div>
-        <div className="buttons">
-          <button /* onClick={} */>%</button>
-          <button onClick={() => handleClear()}>C</button>
-          <button onClick={() => handleDelete()}>Del</button>
-          <button onClick={() => handleOperatorClick("/")}>÷</button>
-          <button onClick={() => handleNumberClick("1")}>1</button>
-          <button onClick={() => handleNumberClick("2")}>2</button>
-          <button onClick={() => handleNumberClick("3")}>3</button>
-          <button onClick={() => handleOperatorClick("-")}>-</button>
-          <button onClick={() => handleNumberClick("4")}>4</button>
-          <button onClick={() => handleNumberClick("5")}>5</button>
-          <button onClick={() => handleNumberClick("6")}>6</button>
-          <button onClick={() => handleOperatorClick("*")}>x</button>
-          <button onClick={() => handleNumberClick("7")}>7</button>
-          <button onClick={() => handleNumberClick("8")}>8</button>
-          <button onClick={() => handleNumberClick("9")}>9</button>
-          <button onClick={() => handleOperatorClick("+")}>+</button>
-          <button /* onClick={() => handleOperatorClick("/")} */>+/-</button>
-          <button onClick={() => handleNumberClick("0")}>0</button>
-          <button onClick={() => handleCommaClick()}>.</button>
-          <button id="equal" onClick={() => calculateResult()}>
-            =
-          </button>
+      {view === "standard" && (
+        <div className="calculator">
+          <div className="display">{display}</div>
+          <div className="buttons">
+            <button onClick={() => handleDeleteAll()}>CE</button>
+            <button onClick={() => handleClear()}>C</button>
+            <button onClick={() => handleDelete()}>
+              <img src={removeIcon} alt="Icon-Delete" />
+            </button>
+            <button onClick={() => handleOperatorClick("/")}>÷</button>
+            <button onClick={() => handleNumberClick("1")}>1</button>
+            <button onClick={() => handleNumberClick("2")}>2</button>
+            <button onClick={() => handleNumberClick("3")}>3</button>
+            <button onClick={() => handleOperatorClick("-")}>-</button>
+            <button onClick={() => handleNumberClick("4")}>4</button>
+            <button onClick={() => handleNumberClick("5")}>5</button>
+            <button onClick={() => handleNumberClick("6")}>6</button>
+            <button onClick={() => handleOperatorClick("*")}>x</button>
+            <button onClick={() => handleNumberClick("7")}>7</button>
+            <button onClick={() => handleNumberClick("8")}>8</button>
+            <button onClick={() => handleNumberClick("9")}>9</button>
+            <button onClick={() => handleOperatorClick("+")}>+</button>
+            <button onClick={() => handleNegative()}>+/-</button>
+            <button onClick={() => handleNumberClick("0")}>0</button>
+            <button onClick={() => handleCommaClick()}>.</button>
+            <button id="equal" onClick={() => calculateResult()}>
+              =
+            </button>
+          </div>
+          <div id="mode">
+            <button
+              onClick={() => setView("scientific")}
+              className={view === "scientific" ? "active-view" : ""}
+            >
+              Modo Cientifica
+            </button>
+            <button
+              onClick={() => setView("standard")}
+              className={view === "standard" ? "active-view" : ""}
+            >
+              Modo Estándar
+            </button>
+          </div>
         </div>
-      </div>
+      )}
+      {view === "scientific" && (
+        <div className="calculator">
+          <div className="display">{display}</div>
+          <div className="buttons">
+            <button onClick={() => handleDeleteAll()}>CE</button>
+            <button onClick={() => handleClear()}>C</button>
+            <button onClick={() => handleDelete()}>
+              <img src={removeIcon} alt="Icon-Delete" />
+            </button>
+            <button onClick={() => handleOperatorClick("/")}>÷</button>
+            <button onClick={() => handleNumberClick("1")}>1</button>
+            <button onClick={() => handleNumberClick("2")}>2</button>
+            <button onClick={() => handleNumberClick("3")}>3</button>
+            <button onClick={() => handleOperatorClick("-")}>-</button>
+            <button onClick={() => handleNumberClick("4")}>4</button>
+            <button onClick={() => handleNumberClick("5")}>5</button>
+            <button onClick={() => handleNumberClick("6")}>6</button>
+            <button onClick={() => handleOperatorClick("*")}>x</button>
+            <button onClick={() => handleNumberClick("7")}>7</button>
+            <button onClick={() => handleNumberClick("8")}>8</button>
+            <button onClick={() => handleNumberClick("9")}>9</button>
+            <button onClick={() => handleOperatorClick("+")}>+</button>
+            <button onClick={() => handleNegative()}>+/-</button>
+            <button onClick={() => handleNumberClick("0")}>0</button>
+            <button onClick={() => handleCommaClick()}>.</button>
+            <button id="equal" onClick={() => calculateResult()}>
+              =
+            </button>
+          </div>
+          <div id="mode">
+            <button
+              onClick={() => setView("scientific")}
+              className={view === "scientific" ? "active-view" : ""}
+            >
+              Modo Cientifica
+            </button>
+            <button
+              onClick={() => setView("standard")}
+              className={view === "standard" ? "active-view" : ""}
+            >
+              Modo Estándar
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
