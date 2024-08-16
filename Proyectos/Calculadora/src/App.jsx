@@ -1,5 +1,7 @@
 import { useState } from "react";
 import removeIcon from "./images/remove_icon.png";
+import squareRoot from "./images/square_root.png";
+import xSquare from "./images/x_square.png";
 
 function App() {
   const [display, setDisplay] = useState("0");
@@ -100,7 +102,7 @@ function App() {
             <button onClick={() => handleDelete()}>
               <img src={removeIcon} alt="Icon-Delete" />
             </button>
-            <button onClick={() => handleOperatorClick("/")}>÷</button>
+            <button onClick={() => handleOperatorClick("/")}>➗</button>
             <button onClick={() => handleNumberClick("1")}>1</button>
             <button onClick={() => handleNumberClick("2")}>2</button>
             <button onClick={() => handleNumberClick("3")}>3</button>
@@ -108,7 +110,7 @@ function App() {
             <button onClick={() => handleNumberClick("4")}>4</button>
             <button onClick={() => handleNumberClick("5")}>5</button>
             <button onClick={() => handleNumberClick("6")}>6</button>
-            <button onClick={() => handleOperatorClick("*")}>x</button>
+            <button onClick={() => handleOperatorClick("*")}>✖</button>
             <button onClick={() => handleNumberClick("7")}>7</button>
             <button onClick={() => handleNumberClick("8")}>8</button>
             <button onClick={() => handleNumberClick("9")}>9</button>
@@ -137,30 +139,50 @@ function App() {
         </div>
       )}
       {view === "scientific" && (
-        <div className="calculator">
+        <div className="calculator-scientific">
           <div className="display">{display}</div>
-          <div className="buttons">
-            <button onClick={() => handleDeleteAll()}>CE</button>
+          <div className="buttons-scientific">
+            <button onClick={() => {}}>X^x</button>
+            <button onClick={() => {}}>
+              <img src={xSquare} alt="x cuadrada" />
+            </button>
+            <button onClick={() => {}}>|x|</button>
             <button onClick={() => handleClear()}>C</button>
             <button onClick={() => handleDelete()}>
               <img src={removeIcon} alt="Icon-Delete" />
             </button>
-            <button onClick={() => handleOperatorClick("/")}>÷</button>
-            <button onClick={() => handleNumberClick("1")}>1</button>
-            <button onClick={() => handleNumberClick("2")}>2</button>
-            <button onClick={() => handleNumberClick("3")}>3</button>
-            <button onClick={() => handleOperatorClick("-")}>-</button>
-            <button onClick={() => handleNumberClick("4")}>4</button>
-            <button onClick={() => handleNumberClick("5")}>5</button>
-            <button onClick={() => handleNumberClick("6")}>6</button>
-            <button onClick={() => handleOperatorClick("*")}>x</button>
-            <button onClick={() => handleNumberClick("7")}>7</button>
-            <button onClick={() => handleNumberClick("8")}>8</button>
-            <button onClick={() => handleNumberClick("9")}>9</button>
-            <button onClick={() => handleOperatorClick("+")}>+</button>
-            <button onClick={() => handleNegative()}>+/-</button>
-            <button onClick={() => handleNumberClick("0")}>0</button>
-            <button onClick={() => handleCommaClick()}>.</button>
+            <button>
+              x
+              <img src={squareRoot} alt="Raiz de x" />
+            </button>
+            <button>Raiz x de x</button>
+            <button>sin</button>
+            <button>cos</button>
+            <button>tan</button>
+            <button>π</button>
+            <button>{"("}</button>
+            <button>{")"}</button>
+            <button>n!</button>
+            <button>➗</button>
+            <button onClick={() => {}}>e</button>
+            <button onClick={() => {}}>7</button>
+            <button onClick={() => {}}>8</button>
+            <button onClick={() => {}}>9</button>
+            <button onClick={() => {}}>✖</button>
+            <button onClick={() => {}}>10^x</button>
+            <button onClick={() => {}}>4</button>
+            <button onClick={() => {}}>5</button>
+            <button onClick={() => {}}>6</button>
+            <button onClick={() => {}}>-</button>
+            <button onClick={() => {}}>log</button>
+            <button onClick={() => {}}>1</button>
+            <button onClick={() => {}}>2</button>
+            <button onClick={() => {}}>3</button>
+            <button onClick={() => {}}>+</button>
+            <button onClick={() => {}}>ln</button>
+            <button onClick={() => {}}>+/-</button>
+            <button onClick={() => {}}>0</button>
+            <button onClick={() => {}}>,</button>
             <button id="equal" onClick={() => calculateResult()}>
               =
             </button>
@@ -181,6 +203,21 @@ function App() {
           </div>
         </div>
       )}
+      <h1>Referencias de iconos usados</h1>
+      <div>
+        <a href="https://www.flaticon.com/free-icons/root" title="root icons">
+          Root icons created by Freepik - Flaticon
+        </a>
+      </div>
+      <div>
+        <a target="_blank" href="https://icons8.com/icon/20980/clear-symbol">
+          Clear Symbol
+        </a>{" "}
+        icon by{" "}
+        <a target="_blank" href="https://icons8.com">
+          Icons8
+        </a>
+      </div>
     </main>
   );
 }
